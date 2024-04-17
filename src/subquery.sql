@@ -195,8 +195,8 @@ where genre in ('HISTORY', 'BIOGRAPHY') group by  genre;
 select books.name, p.name, language.language
 from books
          join publisher p on books.publisher_id = p.id
-         join language on books.language_id =language_id
-where books.publisher_id = (select id from publisher limit 1);
+         join language on books.language_id =language_id;
+
 -- 16.Авторлордун бардык маалыматтары жана издательстволору чыксын, издательство болбосо null чыксын
 select publisher_id, *
 from authors a
@@ -214,6 +214,8 @@ select b.name as book_name, published_year, concat(a.first_name,' ', a.last_name
                                                                                                                 inner join books b on a.id = b.author_id where b.published_year between '2010--1-1' and '2015-1-1';
 -- 21.2010-2015 жылдардын арасындагы китептердин авторлорунун толук аты-жону жана алардын тапкан акчаларынын жалпы суммасы чыксын.
 select concat(a.first_name,' ', a.last_name) as author_full_name ,sum(b.price) as salary_author from authors a inner join books b on a.id = b.author_id where b.published_year  between '2010-1-1' and '2015-1-1' group by first_name,last_name;
+
+
 
 
 
